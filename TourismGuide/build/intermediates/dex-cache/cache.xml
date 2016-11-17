@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        revision="25.0.0"
+        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
+        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_cfd4307644133822b6b01ca067fc50e6bc34806c.jar" />
+    </item>
+    <item
+        jar="G:\Android_studio\TourismGuide\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="25.0.0"
+        sha1="81374b73118120473513974ef4d3d0a8a49b6b00">
+        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\instant-run_c353957ecf190848d4765165af3fac65d7f6e971.jar" />
+    </item>
+    <item
+        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        revision="25.0.0"
+        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
+        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_52a0812f9feec24914bf9c1c13a3d60e2be8e0e8.jar" />
+    </item>
+    <item
+        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        revision="25.0.0"
+        sha1="f83b00041ecfba705603fec40363416c7de69719">
+        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_33aded0cd7dedf06bc6e2f0b1c118906c12b83fe.jar" />
+    </item>
+    <item
+        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        revision="25.0.0"
+        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
+        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.0.1_3f4c9df1340ce62353a5acd23022044cd007060a.jar" />
+    </item>
+    <item
+        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        revision="25.0.0"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_5c4045013517d043b52c910af3671892f20f128f.jar" />
+    </item>
+    <item
+        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        revision="25.0.0"
+        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
+        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.0.1_6ef427ec968ad0eec048a7ea4d26b893ba5bc53b.jar" />
+    </item>
+    <item
+        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        revision="25.0.0"
+        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
+        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.0.1_c38958108edc10f46841f45d6d621d93916e3ddd.jar" />
+    </item>
+    <item
+        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        revision="25.0.0"
+        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
+        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.0.1_531d7bdcdf4a1f328bd2caae6b3666ede2432181.jar" />
+    </item>
+    <item
+        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.0.1_44d21d00123e4289bc27228e7a03cca1d9625966.jar" />
+    </item>
+    <item
+        jar="G:\Android_studio\TourismGuide\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="25.0.0"
+        sha1="f3f22b0bdef3f1cfd5650f386fff6031d419bc97">
+        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_5304a28569955a567983cd194d13f840a52f2f45.jar" />
+    </item>
+    <item
+        jar="C:\sdk\extras\android\m2repository\com\android\support\support-annotations\25.0.1\support-annotations-25.0.1.jar"
+        jumboMode="true"
+        revision="25.0.0"
+        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
+        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\support-annotations-25.0.1_d064ccf3889e5b679ea39140fa7ca2d8ec47a93f.jar" />
+    </item>
+    <item
+        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        revision="25.0.0"
+        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
+        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_41cc931fefe44c605f834660db55b91e5faf4caa.jar" />
+    </item>
+    <item
+        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        revision="25.0.0"
+        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
+        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.0.1_06262d0c50f8fdd9f0163f3ba17b24ebb03ac5d5.jar" />
+    </item>
+    <item
+        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        revision="25.0.0"
+        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
+        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.0.1_aef600ed8299269e3022509663acf516dad2a35d.jar" />
+    </item>
+    <item
+        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        revision="25.0.0"
+        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
+        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.0.1_7dcadf0700295153569e492b16ba9c5fa7a90008.jar" />
+    </item>
+    <item
+        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        revision="25.0.0"
+        sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
+        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.0.1_84a63f79b9399e4857921180fbe05aa89670bd4a.jar" />
+    </item>
+
+</items>
