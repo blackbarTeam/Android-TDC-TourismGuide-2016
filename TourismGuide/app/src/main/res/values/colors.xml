@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#0fcf05</color>
+    <color name="colorPrimaryDark">#03de0e</color>
+    <color name="colorAccent">#13ca03</color>
+
+    <color name="green_button">#13ca03</color>
+    <color name="schedule_button">#f4790f</color>
+    <color name="nearby_button">#e40246</color>
+    <color name="locate_me_button">#f7da01</color>
 </resources>

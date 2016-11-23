@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/fab_locate_me"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:layout_marginBottom="@dimen/fab_lme_margin_bot"
+        android:layout_marginRight="@dimen/fab_child_margin_right"
+        android:src="@drawable/locate_me"
+        app:fabSize="mini"
+        app:backgroundTint="@color/locate_me_button"
+        android:elevation="6dp"
+        app:pressedTranslationZ="15dp"
+        android:visibility="invisible"
+        android:clickable="true"
+
+        />
+
+    <android.support.design.widget.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/fab_nearBy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:layout_marginBottom="@dimen/fab_nearby_margin_bot"
+        android:layout_marginRight="@dimen/fab_child_margin_right"
+        android:src="@drawable/nearby"
+        app:fabSize="mini"
+        android:elevation="6dp"
+        app:pressedTranslationZ="15dp"
+        app:backgroundTint="@color/nearby_button"
+        android:visibility="invisible"
+        android:clickable="true"
+
+        />
+
+    <android.support.design.widget.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/fab_setSchedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        app:fabSize="mini"
+        android:elevation="6dp"
+        app:pressedTranslationZ="15dp"
+        android:layout_marginBottom="@dimen/fab_schedule_margin_bot"
+        android:layout_marginRight="@dimen/fab_child_margin_right"
+        android:src="@drawable/schedule"
+        android:visibility="invisible"
+        app:backgroundTint="@color/schedule_button"
+        android:clickable="true"/>
+
+</FrameLayout>
