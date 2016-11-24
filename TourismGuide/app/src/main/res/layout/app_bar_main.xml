@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:showIn="@layout/activity_main_layout">
+
+    <include
+        layout="@layout/content_map_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <include
+        layout="@layout/fab_child_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <android.support.design.widget.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/fab_plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="@dimen/fab_plus_margin_bot"
+        android:layout_marginRight="@dimen/fab_plus_margin_right"
+        android:clickable="true"
+        android:elevation="8dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/fab_plus"
+        app:backgroundTint="@color/green_button"
+        app:fabSize="normal"
+        app:pressedTranslationZ="@dimen/press_tranlatez"
+
+        />
+</android.support.design.widget.CoordinatorLayout>

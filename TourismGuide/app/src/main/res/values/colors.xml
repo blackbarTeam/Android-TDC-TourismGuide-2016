@@ -8,4 +8,6 @@
     <color name="schedule_button">#f4790f</color>
     <color name="nearby_button">#e40246</color>
     <color name="locate_me_button">#f7da01</color>
+    <color name="bg_text_decript_fab">#b0050303</color>
+    <color name="text_decript_fab">#ffffff</color>
 </resources>
