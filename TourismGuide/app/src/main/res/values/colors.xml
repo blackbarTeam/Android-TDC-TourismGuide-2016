@@ -10,4 +10,6 @@
     <color name="locate_me_button">#f7da01</color>
     <color name="bg_text_decript_fab">#b0050303</color>
     <color name="text_decript_fab">#ffffff</color>
+    <color name="white">#ffffff</color>
+    <color name="holo_orange_light">#ffbb33</color>
 </resources>

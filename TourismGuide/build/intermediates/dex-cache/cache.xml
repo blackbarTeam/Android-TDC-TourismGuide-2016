@@ -2,123 +2,643 @@
 <items version="2" >
 
     <item
-        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database-connection\9.2.1\jars\classes.jar"
         jumboMode="true"
+        optimize="true"
         revision="25.0.0"
-        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
-        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_cfd4307644133822b6b01ca067fc50e6bc34806c.jar" />
+        sha1="05d2e01f33fb2097b51fce3f938dc37a75fe2d6b">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-database-connection-9.2.1_5c7be0a9d9295c1a21bb40d7ae01679e766f9a4b\classes.dex" />
     </item>
     <item
-        jar="G:\Android_studio\TourismGuide\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.firebase\firebase-storage-common\9.2.1\jars\classes.jar"
         jumboMode="true"
+        optimize="true"
         revision="25.0.0"
-        sha1="81374b73118120473513974ef4d3d0a8a49b6b00">
-        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\instant-run_c353957ecf190848d4765165af3fac65d7f6e971.jar" />
+        sha1="36e2b438f9b0d68fb2482c8f389e249e32840cff">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-storage-common-9.2.1_30a197bfab95feb4027d34ee612b76ae85f968e5\classes.dex" />
     </item>
     <item
-        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.1\jars\classes.jar"
         jumboMode="true"
-        revision="25.0.0"
-        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
-        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_52a0812f9feec24914bf9c1c13a3d60e2be8e0e8.jar" />
-    </item>
-    <item
-        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="true"
-        revision="25.0.0"
-        sha1="f83b00041ecfba705603fec40363416c7de69719">
-        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_33aded0cd7dedf06bc6e2f0b1c118906c12b83fe.jar" />
-    </item>
-    <item
-        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        revision="25.0.0"
-        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
-        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.0.1_3f4c9df1340ce62353a5acd23022044cd007060a.jar" />
-    </item>
-    <item
-        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="true"
-        revision="25.0.0"
-        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
-        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_5c4045013517d043b52c910af3671892f20f128f.jar" />
-    </item>
-    <item
-        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        revision="25.0.0"
-        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
-        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.0.1_6ef427ec968ad0eec048a7ea4d26b893ba5bc53b.jar" />
-    </item>
-    <item
-        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        revision="25.0.0"
-        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
-        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.0.1_c38958108edc10f46841f45d6d621d93916e3ddd.jar" />
-    </item>
-    <item
-        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        revision="25.0.0"
-        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
-        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.0.1_531d7bdcdf4a1f328bd2caae6b3666ede2432181.jar" />
-    </item>
-    <item
-        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        revision="25.0.0"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.0.1_44d21d00123e4289bc27228e7a03cca1d9625966.jar" />
-    </item>
-    <item
-        jar="G:\Android_studio\TourismGuide\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        revision="25.0.0"
-        sha1="f3f22b0bdef3f1cfd5650f386fff6031d419bc97">
-        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_5304a28569955a567983cd194d13f840a52f2f45.jar" />
-    </item>
-    <item
-        jar="C:\sdk\extras\android\m2repository\com\android\support\support-annotations\25.0.1\support-annotations-25.0.1.jar"
-        jumboMode="true"
-        revision="25.0.0"
-        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
-        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\support-annotations-25.0.1_d064ccf3889e5b679ea39140fa7ca2d8ec47a93f.jar" />
-    </item>
-    <item
-        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="true"
-        revision="25.0.0"
-        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
-        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_41cc931fefe44c605f834660db55b91e5faf4caa.jar" />
-    </item>
-    <item
-        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.1\jars\classes.jar"
-        jumboMode="true"
+        optimize="true"
         revision="25.0.0"
         sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
-        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.0.1_06262d0c50f8fdd9f0163f3ba17b24ebb03ac5d5.jar" />
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.0.1_66fee1073b11e1f371efe0aa956fd7a73503b592\classes.dex" />
     </item>
     <item
-        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\classes.jar"
+        is-multidex="true"
+        jar="C:\sdk\extras\android\m2repository\com\android\support\support-annotations\25.0.1\support-annotations-25.0.1.jar"
         jumboMode="true"
+        optimize="true"
         revision="25.0.0"
-        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
-        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.0.1_aef600ed8299269e3022509663acf516dad2a35d.jar" />
+        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.0.1_d064ccf3889e5b679ea39140fa7ca2d8ec47a93f\classes.dex" />
     </item>
     <item
-        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\classes.jar"
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\9.2.1\jars\classes.jar"
         jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="def5530cb13311617fc8f962e2a90225bb6904e2">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-plus-9.2.1_a797f71bd89b486ac37784614e34a4efff61e5dd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6a0f2d219f82db499ac03d5a985c4eb3e83fc422">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-analytics-9.2.1_2daaa801b2d7d74956d238c009e1fd4c7eed5305\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.firebase\firebase-config\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7bb417e9ac8645285342935679e75d371b58b62b">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-config-9.2.1_e25ecf802f7bf13aa98458ec7a44e85d7662e809\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f3b0ff905873c91ab64addba30cc1e77bed34c4d">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-appinvite-9.2.1_bd890449f049a67d4104a94a448be81065834550\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_12b279f53e4c50d46b8433667ca6d4f3569a5536\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6b896c1067633db41e9c10a3a5d0919c5c4cfc8c">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-basement-9.2.1_dac74ddf53b1f2816cbfc6eaf9c4d2ad1b189634\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="89ab748a6c0ab6ac1d3671f2356d6181e8108bc5">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-drive-9.2.1_3ece547d7275145eb63f443946616217b5a2d592\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\23.0.0\jars\libs\internal_impl-23.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="03d38bb042efe3e5ce27ba66b729a9523c36d8fe">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.0.0_c411711bae5e292dafbc0d740e7cd843afc1585a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_9b7bb6c318908af5becac65317908dd849049488\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.0.1_ec0fb83b61382ededf8c8e05d4928fac4b32ba29\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="edf9a22ebf25281619265079aec8f5d433da1a5c">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-gcm-9.2.1_0f327300a105a6c1410e0d10e22b3b0ca786fa00\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-clearcut\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="90eeba67a669f8fb24db0f821ef81703fe7a02bc">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-clearcut-9.2.1_310a197f355dd90255fc30e06a5384ed741e7c66\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3a42c5696fa39930d39770f7e5552a9c965fbe09">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-vision-9.2.1_0d6b04cb40273218827a6431c59f50448e8a26fd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="bbd51be332bace144b3d16501ec0af379c3c8750">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-maps-9.2.1_952469469618427b5bc7d4c25008872f259aa4c0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3627eacd7f7cafb5e8ae683992e7b2f9b7dcab1a">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-common-9.2.1_c190962746f7dd556b4f15289c47056bad72a9ef\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f83b00041ecfba705603fec40363416c7de69719">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_6d645085e8faae9ec5d937dbbeefa9b086e0718d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.0.1_9dde2cdc62c0577df845527c08329df9a51f872d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
         revision="25.0.0"
         sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
-        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.0.1_7dcadf0700295153569e492b16ba9c5fa7a90008.jar" />
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.0.1_54ea4134f08ed2ea6ff127c199105912b8e8d028\classes.dex" />
     </item>
     <item
-        jar="G:\Android_studio\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.1\jars\classes.jar"
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\9.2.1\jars\classes.jar"
         jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6d2f508d1a9fa0fbe1653595e484800c08afb42c">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-ads-9.2.1_37f6c9180cf6e598da9ccf2e6b76ac8582988dec\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d41b5d21cc9dd7d210f0ae82ac509ba7f091d611">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-iid-9.2.1_7d7a4203a1b9ed5280ee6bfee75499a94c1e41ed\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="357a8702c49044417d4856861c8f435e7c74ef09">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-analytics-9.2.1_d498a489f877182adc5bea890d9299026b9169d8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-25.0.1_cde31d51be197680c03b3ece04a9ad29c769c154\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b24c1a80d8ccaecee7b8b80209b4e273dc22b14d">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tagmanager-9.2.1_72be950b8dcc54f0bbc0ae037b95c0ce462a481b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.0.1_ddeb473dfef4d6ce21d443b8ed661e74d04438a6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_eef9ca2f475718a8c83a0cdd2e98af04831803b6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f0462288e276dbc5b4dd8b07c9f4e5a91744a93b">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_c6b99fc4dcb19f1df9adbe142edc4e9775dfb43c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="421b36cf4f0d3bbd75e8f28647fccf36674ef049">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-base-9.2.1_4b7ef971b5d592e26039b92c4d6991370b1a479e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-iid\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a65d98c9409f271d3209f4cc1f7d8e0391665fa5">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-iid-9.2.1_347ad90ad475f21f245ac4a03130b629b404c4f1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4b515e6e269bfe848f5b43ac09bce54d6617d4fd">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-safetynet-9.2.1_2eac4232440ceb5ec7c3f8b3776928bdb8c52b2c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8aada8a0e9e9b3ecdda5e80f17c6a51a468e302a">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-wallet-9.2.1_38500183bf6ce55a4bad8150275f987b6733f4e8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.firebase\firebase-storage\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e719de687ac45141de3dd613907860a495580af0">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-storage-9.2.1_fb04e98c13d2e308dd2def525f1ecd1b923798e9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-places\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0979debb5b4d955ddc0e80bb192f4f00c2f91750">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-places-9.2.1_6bbd48864a2579bfa3690fed97f24a94af2d6a18\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="77e2e4803396fa79009ace04d9be84184aafcc31">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tagmanager-api-9.2.1_f12ed0a1580fb2a4435d276bbaf25d148a5690cc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="297d4bcf6ed4e747a1bf7d0d094a2d911a8d3a8e">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-25.0.1_cf3297dc426275d5b702fb5adeac07e30edc325a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="05a2710d284c03087013a667a324c9e2aba5bc91">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-panorama-9.2.1_0dbcb822b5727a6ebff8840d41b54adb66d75e00\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-contextmanager\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ccc963cafe59ce185c49f47baff7eedcb8589bdf">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-contextmanager-9.2.1_e85d97f462d2a9c42fd80a13edb429aa3e15f46a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e1bec33f1ec5367e25676638b430b9d585f3dbec">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-auth-9.2.1_beda01673b5f4797d55dcacf293c73ece358bf6e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gass\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="081ced8ab77e606b6743c27cfe93dc450447b046">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-gass-9.2.1_f8d6297c497a4e4c2765ac753686e5f9477834bc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d064f813cd835f17853e39221b247cf6a997a2db">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-fitness-9.2.1_5f0d2362d4da3aa7fcc338a9be36562f0e196b10\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0765979e802b1669c90dc36076559461d5eb6ad1">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-nearby-9.2.1_f7722bf3f7d494670fbc548c38b44e1aace79165\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth-common\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ee409046028e5657a2a69edaa2eba00d6511a74c">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-auth-common-9.2.1_aa477e2ccf2b1c5533011bc5fbf5d03296bfa1fd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth-base\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="48917c60ea81213ea39cbd7123996a5401106dc3">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-auth-base-9.2.1_58eaa03b1bb417c85e053a85def34f0bbbd51667\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.firebase\firebase-messaging\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ac78f93fc89c497a65f9d9a352cd405996d2f65a">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-messaging-9.2.1_1b5c7ac762decaf0831e572c29c2eb13e6f04db2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics-impl\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="1141496362c8876f0da4b645fbaf22c0a3618372">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-analytics-impl-9.2.1_01b0a4ff7fe94a9312edacc24b044a710fffff11\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5337354083e89ed67151859ab0b6b80935c60eaf">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-analytics-impl-9.2.1_03926d46173a28bd6bd0176ac8984856e64ccaa3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="60034747223bfc22c8dbfa215dea63218897feee">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_17b3db6ac614d93b4f3a239f1923b2fd4b7093f6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast-framework\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="9f2282b9fc24f24c69665032dede1bc7201cf006">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-cast-framework-9.2.1_d106c7f7cf96e760780147fe3bee41017c9d5e3f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ee19e33a798d11a5cf309a40155b8223fadcdeea">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-appindexing-9.2.1_426ab336982ae642013424e771a4b8ffd67294ee\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="310ef01419435979cc82847cf085799a8d00e7e9">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-ads-lite-9.2.1_13cf026e1b77845c989fbeda351a4b7ee980ad6e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="07c569a77f437c5c71eac8b1b636a50bebb69a93">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-location-9.2.1_d1d51ecf952335f3bdddc57760c121afb6e0a914\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\23.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d358b3dd49a7c67844622dcbc9cf4339e13952ce">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-mediarouter-v7-23.0.0_35385e4451d36f06f43234d81d46bf67c6bb1de1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
         revision="25.0.0"
         sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
-        <dex dex="G:\Android_studio\TourismGuide\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.0.1_84a63f79b9399e4857921180fbe05aa89670bd4a.jar" />
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.0.1_d5ce0cfb5a51519007fe312514fb80c8dc022ebf\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2506c5893e125e2f9cfc522378e893620c21b109">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-auth-9.2.1_90acf55229d296189a9de49db206732f3f534995\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.firebase\firebase-crash\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6c09228ff931eb30b68dd27fe34ed90d978b6892">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-crash-9.2.1_883975af781c9da555b1e1b04a76f9cb66d85134\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\transition\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c1b6ab157e8e12cb08b9ee82bb5e3c5d22632eb3">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-transition-25.0.1_c1c9597c49ef59f8b331fc695266696da93b8fe9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.0.1_b14ff7467d9260233f96851aec6d6178da39bdea\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth-module\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="35a01d7cb4ff6b5976777bf5827fd8f206fb8757">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-auth-module-9.2.1_d9c3d175c8afcb06654f0b9f82eb15887f504332\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f06a0705d7b8b9d18b00d056fe0e07bec75514e6">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-database-9.2.1_c339a9f2d533d5b92b2b64ca52dacb5c27c65318\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\design\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3b236883e0df6002cabb01ce57d00a5b1e5de610">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-25.0.1_0fb98cf2759c687de044b99a4a0b52df504ce774\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="819c2c3a4fb135e085445d11131d069cf9c32b2a">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tasks-9.2.1_8c298a9dc0986a71eab9de731df78e3bf3b66f4e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="dd1907a2e855eeb2be8aa3486f3d4d4f1c8b22af">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-wearable-9.2.1_e64d3ec3d6d064ecfd079ecc29f9cdc590065840\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\multidex\1.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-multidex-1.0.1_f039df75fe7b0d4c6895e9bab3684ef17091f1ac\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="428c9bac95b2f72921224e289553a04bea61cda5">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-cast-9.2.1_965cc6561437355aae1c58f0efa5f894745d302a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.0.1_6b0c8647aa4d8406a2e183c0b1e71dee49f7abc7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_ebdce54116415e1704c5ccaf3b9c5d427edd55b6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="152cba5ca28fd4a5191a8577a0fa96d61122041e">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-identity-9.2.1_dd4010725e4f1dcabdadd5a33af533390f71eb9e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\9.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4c2b01baa64ba25f8dbdf7f7f828bc5664dab55e">
+        <dex dex="G:\Android_studio\Baclkbar-TourismGuide\trunk\TourismGuide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-games-9.2.1_eec14ca98b141797d881ddb85e919a5ae7789544\classes.dex" />
     </item>
 
 </items>

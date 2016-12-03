@@ -14,5 +14,6 @@
     <dimen name="text_decript_nearby_margin_bot">176dp</dimen>
     <dimen name="text_decript_lcate_margin_bot">228dp</dimen>
     <dimen name="text_decript_schedule_margin_bot">120dp</dimen>
+    <dimen name="item_listview_font_size">20sp</dimen>
 
 </resources>

@@ -3,4 +3,21 @@
     <string name="locate_me_decript">locate me</string>
     <string name="near_by_decript">near by</string>
     <string name="set_schedule_decript">set schedule</string>
+    <string name="search_hint">search every where</string>
+    <string name="types_search_hint">type here</string>
+
+    <string-array name="types_support">
+        <item>Cafe</item>
+        <item>Food</item>
+        <item>Bar</item>
+        <item>Gym</item>
+        <item>Park</item>
+        <item>Car Repair</item>
+        <item>Post Office</item>
+        <item>Airport</item>
+        <item>ATM</item>
+        <item>Bank</item>
+        <item>Police</item>
+        <item>Hospital</item>
+    </string-array>
 </resources>

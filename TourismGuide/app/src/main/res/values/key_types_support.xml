@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string name="cafe">cafe</string>
+        <string name="restaurant">restaurant</string>
+        <string name="food">food</string>
+        <string name="gym">gym</string>
+        <string name="park">park</string>
+        <string name="bar">bar</string>
+        <string name="post_office">post_office</string>
+        <string name="airport">airport</string>
+        <string name="car_repair">car_repair</string>
+        <string name="atm">atm</string>
+        <string name="bank">bank</string>
+        <string name="police">police</string>
+        <string name="hospital">hospital</string>
+        <string name="zoo">zoo</string>
+</resources>
