@@ -22,6 +22,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +40,11 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.wang.avi.AVLoadingIndicatorView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -49,7 +55,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class MainActivity extends FragmentActivity
-        implements GoogleApiClient.OnConnectionFailedListener, OnMapReadyCallback, GoogleMap.OnCameraChangeListener, GoogleMap.OnMarkerClickListener {
+        implements GoogleApiClient.OnConnectionFailedListener, OnMapReadyCallback, GoogleMap.OnCameraChangeListener, GoogleMap.OnMarkerClickListener ,GoogleMap.OnMapLoadedCallback {
 
     private FloatingActionButton fabPlus, fabNearBy, fabSchedule, fabLocateMe; //main button
     private boolean flagMenuOpen = false; // for drawer navigation
@@ -62,12 +68,15 @@ public class MainActivity extends FragmentActivity
     private DrawerLayout drawerNearBy; // drawer navigation
     private EditText edtsearch;  // edit text search
     private LinearLayout lnHeader; // linear layout header of drawer navigation
+    private AVLoadingIndicatorView aviLoading ; //  progressbar when loading
 
     private GoogleMap mMap; // main map
     private LatLng locateMe; // location of user
-    private  LatLng locatePin;
-
-
+    private  LatLng locatePin; //location of pin picker
+    private float carmeraZoom; // catch index zoom of camera with each object
+    private int timesUpdatePlace = 0; //count times call updatePlace()
+    private int sizeJSONArr = 0; //length JSONArray results
+    private boolean flagMapLoaded = false;
 
     private final String KEY_API_PLACES = "AIzaSyC4U9eZCroaixKpvMgHbUMyNO-Ekni_AuU";
     private final int DELAY_ON_CLICK_ITEM = 400; // delay when drawer is closed
@@ -88,14 +97,6 @@ public class MainActivity extends FragmentActivity
     private String urlNearBy;
 
 
-
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,7 +112,8 @@ public class MainActivity extends FragmentActivity
         txtNearBy = (TextView) findViewById(R.id.txt_decript_nearb);
         txtSchedule = (TextView) findViewById(R.id.txt_decript_schedule);
         lnHeader = (LinearLayout) findViewById(R.id.lnHeader_drawer);
-
+        aviLoading = (AVLoadingIndicatorView) findViewById(R.id.aviLoading);
+        aviLoading.setVisibility(View.VISIBLE);
         //load animation from anim
         fabMoveUpRotate = AnimationUtils.loadAnimation(this, R.anim.fab_move_up_rotate);
         plusOpenRotate = AnimationUtils.loadAnimation(this, R.anim.fab_plus_open_rotate);
@@ -121,6 +123,7 @@ public class MainActivity extends FragmentActivity
         textMoveOut = AnimationUtils.loadAnimation(this, R.anim.text_move_out);
         edtAnimOpen = AnimationUtils.loadAnimation(this, R.anim.edt_search_anim_open_width);
         edtAniClose = AnimationUtils.loadAnimation(this, R.anim.edt_search_anim_close_width);
+
 
         //load drawer near by
         drawerNearBy = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -203,7 +206,7 @@ public class MainActivity extends FragmentActivity
                 //do something here
                 CameraPosition cameraPosition = new CameraPosition.Builder()
                         .target(locateMe)      // Sets the center of the map to Mountain View
-                        .zoom(17)                   // Sets the zoom
+                        .zoom(carmeraZoom)                   // Sets the zoom
                         .bearing(90)                // Sets the orientation of the camera to east
                         .tilt(50)                   // Sets the tilt of the camera to 30 degrees
                         .build();                   // Creates a CameraPosition from the builder
@@ -238,6 +241,112 @@ public class MainActivity extends FragmentActivity
         listTypesSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                CameraPosition.Builder carmeraBuider = new CameraPosition.Builder();
+                carmeraBuider.target(locateMe);
+                carmeraBuider.bearing(90);                // Sets the orientation of the camera to east
+                carmeraBuider.tilt(15);                    // Sets the tilt of  degrees
+
+                switch (i){
+                    case 0 :{
+                        typeSearch = getResources().getString(R.string.cafe);
+                        radiusSearch = "1000";
+                        carmeraBuider.zoom(16);
+                        carmeraZoom = 16;
+                        break;
+                    }
+                    case 1 :{
+                        typeSearch = getResources().getString(R.string.food);
+                        radiusSearch = "1000";
+                        carmeraBuider.zoom(16);
+                        carmeraZoom = 16;
+                        break;
+                    }
+                    case 2 :{
+                        typeSearch = getResources().getString(R.string.bar);
+                        radiusSearch = "2000";
+                        carmeraBuider.zoom(15);
+                        carmeraZoom = 15;
+                        break;
+                    }
+                    case 3 :{
+                        typeSearch = getResources().getString(R.string.gym);
+                        radiusSearch = "1000";
+                        carmeraBuider.zoom(15);
+                        carmeraZoom = 15;
+                        break;
+                    }
+                    case 4 :{
+                        typeSearch = getResources().getString(R.string.park);
+                        radiusSearch = "5000";
+                        carmeraBuider.zoom(13);
+                        carmeraZoom = 13;
+                        break;
+                    }
+                    case 5 :{
+                        typeSearch = getResources().getString(R.string.car_repair);
+                        radiusSearch = "4000";
+                        carmeraBuider.zoom(14);
+                        carmeraZoom = 14;
+                        break;
+                    }
+                    case 6 :{
+                        typeSearch = getResources().getString(R.string.post_office);
+                        radiusSearch = "2000";
+                        carmeraBuider.zoom(15);
+                        carmeraZoom = 15;
+                        break;
+                    }
+                    case 7 :{
+                        typeSearch = getResources().getString(R.string.airport);
+                        radiusSearch = "30000";
+                        carmeraBuider.zoom(11);
+                        carmeraZoom = 11;
+                        break;
+                    }
+                    case 8 :{
+                        typeSearch = getResources().getString(R.string.atm);
+                        radiusSearch = "1000";
+                        carmeraBuider.zoom(16);
+                        carmeraZoom = 16;
+                        break;
+                    }
+                    case 9 :{
+                        typeSearch = getResources().getString(R.string.bank);
+                        radiusSearch = "1000";
+                        carmeraBuider.zoom(16);
+                        carmeraZoom = 16;
+                        break;
+                    }
+                    case 10 :{
+                        typeSearch = getResources().getString(R.string.police);
+                        radiusSearch = "2000";
+                        carmeraBuider.zoom(14);
+                        carmeraZoom = 14;
+                        break;
+                    }
+                    case 11 :{
+                        typeSearch = getResources().getString(R.string.hospital);
+                        radiusSearch = "5000";
+                        carmeraBuider.zoom(13);
+                        carmeraZoom = 13;
+                        break;
+                    }
+                    default:{
+                        typeSearch = DEFAULT_TYPES_SEARCH;
+                    }
+                }
+                // Log.d("testParse",typeSearch);
+                buidURLSearch();
+                // Log.d("testParse",urlNearBy);
+
+                CameraPosition cameraPosition = carmeraBuider.build();  //buid position for camera map
+                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                PlacesTask placesTask = new PlacesTask();
+                mMap.clear();
+                placesTask.execute(urlNearBy);
+
+                //delay drawer close
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -245,71 +354,6 @@ public class MainActivity extends FragmentActivity
                     }
                 }, DELAY_ON_CLICK_ITEM);
 
-                switch (i){
-                    case 0 :{
-                        typeSearch = getResources().getString(R.string.cafe);
-                        break;
-                    }
-                    case 1 :{
-                        typeSearch = getResources().getString(R.string.food);
-                        break;
-                    }
-                    case 2 :{
-                        typeSearch = getResources().getString(R.string.bar);
-                        break;
-                    }
-                    case 3 :{
-                        typeSearch = getResources().getString(R.string.gym);
-                        break;
-                    }
-                    case 4 :{
-                        typeSearch = getResources().getString(R.string.park);
-                        break;
-                    }
-                    case 5 :{
-                        typeSearch = getResources().getString(R.string.car_repair);
-                        break;
-                    }
-                    case 6 :{
-                        typeSearch = getResources().getString(R.string.post_office);
-                        break;
-                    }
-                    case 7 :{
-                        typeSearch = getResources().getString(R.string.airport);
-                        break;
-                    }
-                    case 8 :{
-                        typeSearch = getResources().getString(R.string.atm);
-                        break;
-                    }
-                    case 9 :{
-                        typeSearch = getResources().getString(R.string.bank);
-                        break;
-                    }
-                    case 10 :{
-                        typeSearch = getResources().getString(R.string.police);
-                        break;
-                    }
-                    case 11 :{
-                        typeSearch = getResources().getString(R.string.hospital);
-                        break;
-                    }
-                    default:{
-                        typeSearch = DEFAULT_TYPES_SEARCH;
-                    }
-                }
-               // Log.d("testParse",typeSearch);
-                buidURLSearch();
-               // Log.d("testParse",urlNearBy);
-                CameraPosition cameraPosition = new CameraPosition.Builder()
-                        .target(locateMe)      // Sets the center of the map to Mountain View
-                        .zoom(16)                   // Sets the zoom
-                        .bearing(90)                // Sets the orientation of the camera to east
-                        .tilt(15)                   // Sets the tilt of the camera to 90 degrees
-                        .build();                   // Creates a CameraPosition from the builder
-                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-                PlacesTask placesTask = new PlacesTask();
-                placesTask.execute(urlNearBy);
 
             }
         });
@@ -336,22 +380,6 @@ public class MainActivity extends FragmentActivity
 
             }
         });
-        //
-        locateMe = new LatLng(10.851077, 106.758353); // test
-
-        latSearch = String.valueOf(locateMe.latitude);
-        lngSearch = String.valueOf(locateMe.longitude);
-        radiusSearch = "1000";
-        typeSearch = "cafe|food";
-
-        buidURLSearch();
-        //Log.d("testParse",urlNearBy);
-
-        PlacesTask placesTask = new PlacesTask();
-        placesTask.execute(urlNearBy);
-
-
-
 
     } // xxxxxxxxxxxxxx------end-onCreate-----xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     private void showChildMenu() {
@@ -407,11 +435,25 @@ public class MainActivity extends FragmentActivity
     //load map
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
+        aviLoading.setVisibility(View.VISIBLE);
+        flagMapLoaded = false;
         mMap = googleMap;
+        //fist load place
+        locateMe = new LatLng(10.851077, 106.758353); // test
+
+        latSearch = String.valueOf(locateMe.latitude);
+        lngSearch = String.valueOf(locateMe.longitude);
+        radiusSearch = "1000";
+        typeSearch = "cafe|food";
+
+        buidURLSearch();
+        //Log.d("testParse",urlNearBy);
+        PlacesTask placesTask = new PlacesTask();
+        placesTask.execute(urlNearBy);
         mMap.setOnCameraChangeListener(this);
         mMap.setOnMarkerClickListener(this);
         mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
-
         // Zoom in, animating the camera.
         mMap.animateCamera(CameraUpdateFactory.zoomIn());
         mMap.animateCamera(CameraUpdateFactory.zoomTo(20), 2000, null);
@@ -421,23 +463,22 @@ public class MainActivity extends FragmentActivity
                 .target(locateMe)      // Sets the center of the map to Mountain View
                 .zoom(16)                   // Sets the zoom
                 .bearing(90)                // Sets the orientation of the camera to east
-                .tilt(15)                   // Sets the tilt of the camera to 90 degrees
+                .tilt(15)                   // Sets the tilt of the camera to 15 degrees
                 .build();                   // Creates a CameraPosition from the builder
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-        mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
-            @Override
-            public void onMapLoaded() {
-                //do something here
-            }
-        });
+        carmeraZoom = 16;
+        // map loaded
+        mMap.setOnMapLoadedCallback(this);
     }
 
     @Override
     public void onCameraChange(CameraPosition cameraPosition) {
+        aviLoading.setVisibility(View.VISIBLE);
         //Log.d("Camera postion change" + "", cameraPosition + "");
         locatePin = cameraPosition.target;
+       // flagMapLoaded = false;
         try {
-
+             mMap.setOnMapLoadedCallback(this);
             Location mLocation = new Location("");
             mLocation.setLatitude(locatePin.latitude);
             mLocation.setLongitude(locatePin.longitude);
@@ -450,6 +491,7 @@ public class MainActivity extends FragmentActivity
 
     /** A method to download json data from url */
     private String downloadUrl(String strUrl) throws IOException{
+
         String data = "";
         InputStream iStream = null;
         HttpURLConnection urlConnection = null;
@@ -503,9 +545,22 @@ public class MainActivity extends FragmentActivity
         return true;
     }
 
+    @Override
+    public void onMapLoaded() {
+
+        if(timesUpdatePlace == sizeJSONArr){
+            aviLoading.setVisibility(View.INVISIBLE);
+            sizeJSONArr = 0;
+            timesUpdatePlace =0;
+        }
+        flagMapLoaded = true;
+    }
+
     /** A class, to download Google Places */
     private class PlacesTask extends AsyncTask<String, Integer, String> {
-
+        public PlacesTask(){
+            aviLoading.setVisibility(View.VISIBLE); // progress bar is visible when dowloadUrl() is called
+        }
         String data = null;
 
         // Invoked by execute() method of this object
@@ -524,61 +579,76 @@ public class MainActivity extends FragmentActivity
         @Override
         protected void onPostExecute(String result){
 
-            ParseTask parseTask = new ParseTask();
-            parseTask.execute(result);
+            JSONObject rootObject = null;
+            try {
+                rootObject = new JSONObject(result);
+                JSONArray resultArr = rootObject.getJSONArray("results");
+                sizeJSONArr = resultArr.length();
+                for(int i = 0; i < resultArr.length(); i++){
+                    JSONObject JSONplace = resultArr.getJSONObject(i);
+                    ParseTask parseTask = new ParseTask();
+                    parseTask.execute(JSONplace);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
 
     }
 
     // update places
-    private void upDatePlacesNB(ArrayList<NearByPlaces> nearByPlaces){
-        mMap.clear();
-        for(NearByPlaces place : nearByPlaces) {
+    private void updatePlacesNB(NearByPlaces nearByPlaces){
+
+           timesUpdatePlace++; // if timesUpdatePlace == length of JSON Array result -> the last update place
+
             MarkerOptions markerOptions = new MarkerOptions();
-            markerOptions.position(new LatLng(place.getLatitude(), place.getLongitude()));
-            markerOptions.title(place.getName());
-            if (place.getType().contains("restaurant")) {
+            markerOptions.position(new LatLng(nearByPlaces.getLatitude(), nearByPlaces.getLongitude()));
+            markerOptions.title(nearByPlaces.getName());
+            markerOptions.snippet(nearByPlaces.getAddress());
+            if (nearByPlaces.getTypes().contains("restaurant")) {
                 markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_food));
             } else {
-                if (place.getType().contains("food") && place.getType().contains("cafe")) {
+                if (nearByPlaces.getTypes().contains("food") && nearByPlaces.getTypes().contains("cafe")) {
                     markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_cafe));
                 } else {
-                    if (place.getType().contains("food") && !place.getType().contains("cafe")) {
+                    if (nearByPlaces.getTypes().contains("food") && !nearByPlaces.getTypes().contains("cafe")) {
                         markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_food));
                     } else {
-                        if (place.getType().contains("gym")) {
+                        if (nearByPlaces.getTypes().contains("gym")) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_gym));
                         } else {
-                            if (place.getType().contains("hospital")) {
+                            if (nearByPlaces.getTypes().contains("hospital")) {
                                 markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_hospital));
                             } else {
-                                if (place.getType().contains("park")) {
+                                if (nearByPlaces.getTypes().contains("park")) {
                                     markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_park));
                                 } else {
-                                    if (place.getType().contains("zoo")) {
+                                    if (nearByPlaces.getTypes().contains("zoo")) {
                                         markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_park));
                                     } else {
-                                        if (place.getType().contains("bar") && place.getType().contains("night_club")) {
+                                        if (nearByPlaces.getTypes().contains("bar") && nearByPlaces.getTypes().contains("night_club")) {
                                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_bar));
                                         } else {
-                                            if (place.getType().contains("police")) {
+                                            if (nearByPlaces.getTypes().contains("police")) {
                                                 markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_police));
                                             } else {
-                                                if (place.getType().contains("airport")) {
+                                                if (nearByPlaces.getTypes().contains("airport")) {
                                                     markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_airport));
                                                 }else{
-                                                    if (place.getType().contains("car_repair")) {
+                                                    if (nearByPlaces.getTypes().contains("car_repair")) {
                                                         markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_car_rp));
                                                     }else{
-                                                        if (place.getType().contains("post_office")) {
+                                                        if (nearByPlaces.getTypes().contains("post_office")) {
                                                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_office));
                                                         }else{
-                                                            if (place.getType().contains("bank")) {
+                                                            if (nearByPlaces.getTypes().contains("bank")) {
                                                                 markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_bank));
                                                             }else
                                                             {
-                                                                if (place.getType().contains("atm")) {
+                                                                if (nearByPlaces.getTypes().contains("atm")) {
                                                                     markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_atm));
+                                                                }else{
+                                                                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_unknow));
                                                                 }
                                                             }
                                                         }
@@ -593,22 +663,25 @@ public class MainActivity extends FragmentActivity
                     }
                 }
             }
-                    mMap.addMarker(markerOptions);
-
-                }
+            mMap.addMarker(markerOptions);
+            if(timesUpdatePlace == sizeJSONArr && flagMapLoaded){
+                aviLoading.setVisibility(View.INVISIBLE);
+                sizeJSONArr = 0;
+                timesUpdatePlace =0;
             }
+    }
 
     /** A class, to parse Json  */
-    private class ParseTask extends AsyncTask<String, Integer, ArrayList<NearByPlaces> >{
+    private class ParseTask extends AsyncTask<JSONObject, Integer, NearByPlaces >{
 
-        ArrayList<NearByPlaces> data = null;
+        NearByPlaces data = null;
 
         // Invoked by execute() method of this object
         @Override
-        protected ArrayList<NearByPlaces> doInBackground(String... stringJson) {
+        protected NearByPlaces doInBackground(JSONObject... ObjJSON) {
             try{
                 JSONParsePlaces parsePlaces = new JSONParsePlaces();
-                data = parsePlaces.JSONParseNearBy(stringJson[0]);
+                data = parsePlaces.JSONParseNearBy(ObjJSON[0]);
                 //Log.v("test", data);
             }catch(Exception e){
                 Log.d("Background Task",e.toString());
@@ -617,9 +690,8 @@ public class MainActivity extends FragmentActivity
         }
 
         @Override
-        protected void onPostExecute(ArrayList<NearByPlaces> nearByPlaces) {
-            //when
-            upDatePlacesNB(nearByPlaces);
+        protected void onPostExecute(NearByPlaces nearByPlaces) {
+            updatePlacesNB(nearByPlaces);
         }
     }
     //buid url ... call it when have change (lat,lng,types,radius,..)
@@ -629,6 +701,12 @@ public class MainActivity extends FragmentActivity
                 TXT_TYPE+typeSearch+TOKEN_AND+
                 SENSOR+TOKEN_AND+
                 TXT_KEY+KEY_API_PLACES;
+    }
+
+    private int calculateDistance(LatLng newPoint, LatLng oldPoint){
+        int distance = 0;
+        
+        return distance;
     }
 
 }

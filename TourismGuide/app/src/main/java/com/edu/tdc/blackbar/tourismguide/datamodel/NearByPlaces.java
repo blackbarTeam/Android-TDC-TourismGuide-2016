@@ -12,28 +12,28 @@ public class NearByPlaces {
     private Double longitude;
     private ArrayList<String> types;
     private String name;
+    private String address;
 
     public NearByPlaces(){
         this.placeID ="";
         this.latitude = 0.0;
         this.longitude = 0.0;
         this.types = null;
+        this.name="Unknow";
+        this.address="Unknow";
     }
 
-    public NearByPlaces(String placeID, Double latitude, Double longitude, ArrayList<String> types, String name) {
+    public NearByPlaces(String placeID, Double latitude, Double longitude, ArrayList<String> types, String name, String address) {
         this.placeID = placeID;
         this.latitude = latitude;
         this.longitude = longitude;
         this.types = types;
         this.name = name;
+        this.address = address;
     }
 
     public String getPlaceID() {
         return placeID;
-    }
-
-    public ArrayList<String> getType() {
-        return types;
     }
 
     public Double getLongitude() {
@@ -66,5 +66,17 @@ public class NearByPlaces {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public ArrayList<String> getTypes() {
+        return types;
     }
 }

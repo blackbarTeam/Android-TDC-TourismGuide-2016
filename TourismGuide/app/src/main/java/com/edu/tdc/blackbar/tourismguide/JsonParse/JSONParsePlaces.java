@@ -15,48 +15,35 @@ import java.util.ArrayList;
 
 public class JSONParsePlaces {
 
-    public ArrayList<NearByPlaces> JSONParseNearBy(String stringJSON) {
+    public NearByPlaces JSONParseNearBy(JSONObject objJSON) {
       //  Log.d("testString",stringJSON);
-        ArrayList<NearByPlaces> places = new ArrayList<NearByPlaces>();
+        NearByPlaces place = new NearByPlaces();
         try {
-            JSONObject rootObject = new JSONObject(stringJSON);
-            JSONArray result = rootObject.getJSONArray("results");
-            for(int i = 0; i < result.length(); i++){
-                NearByPlaces nearByPlace = new NearByPlaces();
-
-                JSONObject place = result.getJSONObject(i);
-
-                JSONObject geometry = place.getJSONObject("geometry");
+                JSONObject geometry = objJSON.getJSONObject("geometry");
                 JSONObject location = geometry.getJSONObject("location");
 
                 //  add lat long
-                nearByPlace.setLatitude(location.getDouble("lat"));
-                nearByPlace.setLongitude(location.getDouble("lng"));
+                place.setLatitude(location.getDouble("lat"));
+                place.setLongitude(location.getDouble("lng"));
                 //add  name
-                nearByPlace.setName(place.getString("name"));
+                place.setName(objJSON.getString("name"));
+                // add address
+                place.setAddress(objJSON.getString("vicinity"));
                 //  add place ID
-                nearByPlace.setPlaceID(place.getString("place_id"));
+                place.setPlaceID(objJSON.getString("place_id"));
                 // add type
-                JSONArray types = place.getJSONArray("types");
+                JSONArray types = objJSON.getJSONArray("types");
                 ArrayList<String> stringTypes = new ArrayList<String>();
                 for (int j = 0; j < types.length(); j++){
                     stringTypes.add(types.getString(j));
                 }
 
-                nearByPlace.setType(stringTypes);
-                //  add array list place
-                places.add(nearByPlace);
-
-
-            }
-
-
-
+                place.setType(stringTypes);
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
 
-        return places;
+        return place;
     }
 }

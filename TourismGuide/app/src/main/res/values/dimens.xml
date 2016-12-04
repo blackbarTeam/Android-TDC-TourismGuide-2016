@@ -15,5 +15,7 @@
     <dimen name="text_decript_lcate_margin_bot">228dp</dimen>
     <dimen name="text_decript_schedule_margin_bot">120dp</dimen>
     <dimen name="item_listview_font_size">20sp</dimen>
+    <dimen name="avi_loading_size">40dp</dimen>
+    <dimen name="avi_loading_margin_top">40dp</dimen>
 
 </resources>
