@@ -10,6 +10,7 @@ import android.os.CountDownTimer;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -22,6 +23,7 @@ public class ScheduleActivity extends AppCompatActivity {
     private EditText edtTimeFrom, edtTimeTo, edtDateFrom, edtDateTo, edtLocation, edtNote;
     private ImageButton imgCheck, imgCancle, imgCalendar;
     private Switch swCount;
+    private Button btn_back_details;
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,18 +33,17 @@ public class ScheduleActivity extends AppCompatActivity {
         edtDateFrom = (EditText) findViewById(R.id.edtDateFrom);
         edtDateTo = (EditText) findViewById(R.id.edtDateTo);
         edtTimeFrom = (EditText) findViewById(R.id.edtTimeFrom);
-        edtTimeTo = (EditText) findViewById(R.id.edtTimeTo);
         edtLocation = (EditText) findViewById(R.id.edtLocation);
         edtNote = (EditText) findViewById(R.id.edtNote);
         imgCheck = (ImageButton) findViewById(R.id.imgCheck);
         imgCancle = (ImageButton) findViewById(R.id.imgCancle);
         imgCalendar = (ImageButton) findViewById(R.id.imgCalendar);
         swCount = (Switch) findViewById(R.id.swCountDown);
+        btn_back_details = (Button) findViewById(R.id.btn_back_details);
 
 
 
-
-        //ham goi edittext de bat dau dem nguoc
+        //back
 
         //Calendar ( LUU Y: CHUA SU DUNG DUOC DO VAN DE VE API CUA ANDROID )
         imgCalendar.setOnClickListener(new View.OnClickListener() {
@@ -114,12 +115,14 @@ public class ScheduleActivity extends AppCompatActivity {
         });
 
         //intent tra ve main
-        imgCancle.setOnClickListener(new View.OnClickListener() {
+
+
+        //intent tra ve main
+        btn_back_details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ScheduleActivity.this, MainActivity.class);
-                startActivity(intent);
                 onBackPressed();
+                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
 
             }
         });
