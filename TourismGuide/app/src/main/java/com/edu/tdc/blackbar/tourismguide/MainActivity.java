@@ -86,7 +86,7 @@ public class MainActivity extends FragmentActivity
     private TextView txtLocate, txtNearBy, txtSchedule; //text decription for main floating button
     private DrawerLayout drawerNearBy; // drawer navigation
     private EditText edtsearch;  // edit text search
-    private String textSearch;
+    private String textSearch = null; // text search of user
     private LinearLayout lnHeader; // linear layout header of drawer navigation
     private AVLoadingIndicatorView aviLoading ; //  progressbar when loading
     private ImageView imvPin;
@@ -211,10 +211,14 @@ public class MainActivity extends FragmentActivity
                     //do something here (load map)
                         flagTextSearch = true;
                         textSearch = edtsearch.getText().toString();
-                        if(!textSearch.equals("") | textSearch != null) {
+                        textSearch.trim();
+                        if(!textSearch.matches("") || textSearch != null && textSearch.length() > 0) {
                             timesUpdatePlace = 0;
+
+                            Log.d("test","inside");
                             String url = buidURLTextSearch(textSearch);
-                            Log.d("test", url);
+                            Log.d("test",url);
+                          //  Log.d("test", url);
                             PlacesTask placeSearch = new PlacesTask();
                             placeSearch.execute(url);
                         }
@@ -312,7 +316,7 @@ public class MainActivity extends FragmentActivity
                 flagSearchmode = false;
                 imvPin.setVisibility(View.INVISIBLE);
                 String url = buidURLDirections();
-                Log.d("test",url);
+               // Log.d("test",url);
                 DirectionsTask directionsTask = new DirectionsTask();
                 directionsTask.execute(url);
 
@@ -999,7 +1003,7 @@ public class MainActivity extends FragmentActivity
         for(StepsDirections step : steps){
 
             polylineOptions.addAll(step.getPolyPoint());
-            Log.d("test",step.getInstructions());
+           // Log.d("test",step.getInstructions());
         }
 
 
