@@ -299,8 +299,8 @@ public class MainActivity extends FragmentActivity
             @Override
             public void onClick(View view) {
                 //do something here
-
-
+                Intent intent = new Intent(MainActivity.this, ScheduleActivity.class);
+                startActivity(intent);
                 hideChildMenu();
                 hideRinghtActionButton();
                 flagMenuOpen = false;

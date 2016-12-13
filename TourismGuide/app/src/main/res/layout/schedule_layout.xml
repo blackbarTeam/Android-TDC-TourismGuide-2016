@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_margin="20dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        >
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="66dp"
+            android:src="@drawable/location"
+            android:id="@+id/imageView"
+            android:contentDescription="@string/location"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="0.02"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView android:layout_height="wrap_content"
+                      android:layout_width="wrap_content"
+                      android:id="@+id/txtLocation"
+                      android:hint="@string/location"
+                      android:layout_marginLeft="15dp"></TextView>
+            <EditText android:layout_height="wrap_content"
+                      android:layout_width="wrap_content"
+                      android:id="@+id/edtLocation"
+                      android:hint="@string/locationDesc"
+                      android:layout_marginLeft="15dp"></EditText>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:weightSum="1"
+        >
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="134dp"
+            android:src="@drawable/calendar512"
+            android:id="@+id/imageView2"
+            android:contentDescription="@string/fromdate"
+            android:layout_gravity="center_vertical|center_horizontal"
+            />
+
+        <LinearLayout
+            android:layout_width="303dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView android:layout_height="wrap_content"
+                      android:layout_width="wrap_content"
+                      android:id="@+id/txtDateFrom"
+                      android:hint="@string/fromdate"
+                      android:layout_marginLeft="15dp"></TextView>
+            <EditText android:layout_height="wrap_content"
+                      android:layout_width="wrap_content"
+                      android:id="@+id/edtDateFrom"
+                      android:hint="@string/inputdatefrom"
+                      android:layout_marginLeft="15dp"></EditText>
+
+            <TextView android:layout_height="wrap_content"
+                      android:layout_width="match_parent"
+                      android:id="@+id/txtDateTo"
+                      android:hint="@string/todate"
+                      android:layout_marginLeft="15dp"></TextView>
+
+            <EditText android:layout_height="wrap_content"
+                      android:layout_width="141dp"
+                      android:id="@+id/edtDateTo"
+                      android:hint="@string/inputdateto"
+                      android:layout_marginLeft="15dp"></EditText>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageButton
+        android:layout_width="22dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/calendar128"
+        android:id="@+id/imgCalendar"
+        android:layout_gravity="end"
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:weightSum="1"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        >
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="67dp"
+            android:src="@drawable/clockicon1"
+            android:id="@+id/imageView4"
+            android:contentDescription="@string/fromtime"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="0.78"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView android:layout_height="wrap_content"
+                      android:layout_width="wrap_content"
+                      android:id="@+id/txtTimeFrom"
+                      android:hint="@string/fromtime"
+                      android:layout_marginLeft="15dp"></TextView>
+            <EditText android:layout_height="wrap_content"
+                      android:layout_width="154dp"
+                      android:id="@+id/edtTimeFrom"
+                      android:hint="@string/inputtimefrom"
+                      android:layout_marginLeft="15dp"></EditText>
+
+            <TextView android:layout_height="wrap_content"
+                      android:layout_width="match_parent"
+                      android:id="@+id/txtTimeTo"
+                      android:hint="@string/totime"
+                      android:layout_marginLeft="15dp"></TextView>
+
+            <EditText android:layout_height="wrap_content"
+                      android:layout_width="168dp"
+                      android:id="@+id/edtTimeTo"
+                      android:hint="@string/inputtimeto"
+                      android:layout_marginLeft="15dp"></EditText>
+
+        </LinearLayout>
+
+        <Switch
+
+            android:layout_width="99dp"
+            android:layout_height="77dp"
+            android:id="@+id/swCountDown"
+            android:layout_gravity="right|center_vertical|center_horizontal"
+            android:gravity="center_vertical|center_horizontal"
+            android:foregroundGravity="right"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/note512"
+            android:id="@+id/imageView5"
+            android:contentDescription="@string/note"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView android:layout_height="wrap_content"
+                      android:layout_width="wrap_content"
+                      android:id="@+id/txtNote"
+                      android:hint="@string/note"
+                      android:layout_marginLeft="15dp"></TextView>
+            <EditText android:layout_height="wrap_content"
+                      android:layout_width="match_parent"
+                      android:id="@+id/edtNote"
+                      android:hint="@string/note"
+                      android:layout_marginLeft="15dp"></EditText>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="15dp"
+        android:weightSum="1"
+        android:layout_gravity="end"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        >
+
+        <ImageButton
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:src="@drawable/cancle"
+            android:id="@+id/imgCancle"
+            android:foregroundGravity="center_vertical|center_horizontal"
+            android:layout_gravity="center"
+            />
+
+        <ImageButton
+            android:layout_width="31dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/check"
+            android:id="@+id/imgCheck"
+            android:foregroundGravity="center"
+            android:layout_gravity="center_horizontal|center_vertical"
+            />
+    </LinearLayout>
+</LinearLayout>

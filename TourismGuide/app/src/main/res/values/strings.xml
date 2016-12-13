@@ -8,6 +8,22 @@
     <string name="btn_direct">Direct</string>
     <string name="btn_info">Detail</string>
     <string name="title_place_details">Information</string>
+    <string name="location">Where do you want to go?</string>
+    <string name="locationDesc"> Input Location Here </string>
+    <string name="fromdate">From</string>
+    <string name="inputdatefrom">Input Date From</string>
+    <string name="todate">To</string>
+    <string name="inputdateto">Input Date To</string>
+    <string name="fromtime">Time From</string>
+    <string name="inputtimefrom">Input Time From</string>
+    <string name="totime">To Time</string>
+    <string name="inputtimeto">Input Time To</string>
+    <string name="locationDescription">Location</string>
+    <string name="calendarDescription">Calendar</string>
+    <string name="cancleDescription">Cancle</string>
+    <string name="checkDescription">Check</string>
+    <string name="clockDescription">Time</string>
+    <string name="note">Note</string>
 
     <string-array name="types_support">
         <item>Cafe</item>
