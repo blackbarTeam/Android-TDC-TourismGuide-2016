@@ -74,7 +74,7 @@ public class MyAdapter extends ArrayAdapter {
                     ic_item.setImageResource(R.drawable.hospital);
                     break;
                 }default:{
-                    ic_item.setImageResource(R.drawable.default_unknow);
+
                 }
             }
         }

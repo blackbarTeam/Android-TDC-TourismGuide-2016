@@ -17,5 +17,6 @@
     <dimen name="item_listview_font_size">20sp</dimen>
     <dimen name="avi_loading_size">40dp</dimen>
     <dimen name="avi_loading_margin_top">40dp</dimen>
+    <dimen name="txt_size_title">20sp</dimen>
 
 </resources>

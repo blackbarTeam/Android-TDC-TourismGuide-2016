@@ -3,6 +3,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/btn_direct"
+        android:layout_marginTop="200dp"
+        android:layout_marginRight="-10dp"
+        android:layout_width="90dp"
+        android:layout_height="30dp"
+        android:text="@string/btn_direct"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:background="@drawable/btn_direct_bg"
+        android:layout_gravity="top|end"
+        android:visibility="invisible"/>
+    <Button
+        android:id="@+id/btn_detail"
+        android:layout_marginTop="232dp"
+        android:layout_marginRight="-10dp"
+        android:layout_width="90dp"
+        android:layout_height="30dp"
+        android:text="@string/btn_info"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:background="@drawable/btn_detail_bg"
+        android:layout_gravity="top|end"
+        android:visibility="invisible"/>
+
     <android.support.design.widget.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/fab_locate_me"
         android:layout_width="wrap_content"

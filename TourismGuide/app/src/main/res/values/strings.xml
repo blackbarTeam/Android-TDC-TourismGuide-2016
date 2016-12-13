@@ -5,6 +5,9 @@
     <string name="set_schedule_decript">set schedule</string>
     <string name="search_hint">search every where</string>
     <string name="types_search_hint">type here</string>
+    <string name="btn_direct">Direct</string>
+    <string name="btn_info">Detail</string>
+    <string name="title_place_details">Information</string>
 
     <string-array name="types_support">
         <item>Cafe</item>
@@ -20,4 +23,7 @@
         <item>Police</item>
         <item>Hospital</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

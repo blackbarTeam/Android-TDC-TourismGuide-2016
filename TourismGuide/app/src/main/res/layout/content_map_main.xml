@@ -53,7 +53,8 @@
                 android:id="@+id/imageMarker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/me_maker"/>
+                android:src="@drawable/me_maker"
+                android:visibility="visible"/>
         </LinearLayout>
 
 

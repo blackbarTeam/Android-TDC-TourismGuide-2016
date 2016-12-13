@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="5dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:background="@drawable/list_review_bg_item"
+    android:layout_marginBottom="5dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Author: "
+            android:layout_marginRight="20dp"/>
+
+        <TextView
+            android:id="@+id/txt_author_review_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Author: "/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Rating: "
+            android:layout_marginRight="20dp"/>
+
+        <TextView
+            android:id="@+id/txt_rating_review_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="4.2"
+            android:layout_marginRight="20dp"/>
+        <ImageView
+            android:id="@+id/imv_rating_review_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/map_atm"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/txt_content_review_item"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Ago: "
+            android:layout_marginRight="20dp"/>
+        <TextView
+            android:id="@+id/txt_time_ago_review_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="3 moth"/>
+    </LinearLayout>
+
+
+</LinearLayout>

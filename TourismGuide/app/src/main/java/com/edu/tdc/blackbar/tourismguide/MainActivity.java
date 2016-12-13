@@ -1,6 +1,9 @@
 package com.edu.tdc.blackbar.tourismguide;
 
 import android.content.Context;
+import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -19,7 +22,9 @@ import android.view.animation.AnimationUtils;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -27,10 +32,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.edu.tdc.blackbar.tourismguide.JsonParse.JSONParsePlaces;
+import com.edu.tdc.blackbar.tourismguide.datamodel.Directions;
 import com.edu.tdc.blackbar.tourismguide.datamodel.NearByPlaces;
+import com.edu.tdc.blackbar.tourismguide.datamodel.PlaceDetails;
+import com.edu.tdc.blackbar.tourismguide.datamodel.StepsDirections;
 import com.edu.tdc.blackbar.tourismguide.myAdapter.MyAdapter;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.drive.Drive;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -40,6 +49,9 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolygonOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import org.json.JSONArray;
@@ -53,22 +65,31 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends FragmentActivity
-        implements GoogleApiClient.OnConnectionFailedListener, OnMapReadyCallback, GoogleMap.OnCameraChangeListener, GoogleMap.OnMarkerClickListener ,GoogleMap.OnMapLoadedCallback {
+        implements GoogleApiClient.OnConnectionFailedListener, OnMapReadyCallback, GoogleMap.OnCameraChangeListener, GoogleMap.OnMarkerClickListener ,GoogleMap.OnMapLoadedCallback , GoogleMap.OnMapClickListener{
 
     private FloatingActionButton fabPlus, fabNearBy, fabSchedule, fabLocateMe; //main button
+    private Button btnDirect, btnDetail;
     private boolean flagMenuOpen = false; // for drawer navigation
     private boolean flagSearchFocus = false; // for edit text search
+    private boolean flagOpenBtnRight = false; //f
+    private boolean flagDirectionMode = false; // to know application when at direction mode or no
+    private boolean flagSearchmode = true;
+    private boolean flagTextSearch = false;
 
     private Animation fabMoveUpRotate, plusOpenRotate, plusCloseRotate,
-            fabMoveDown, textMoveUp, textMoveOut, edtAnimOpen, edtAniClose;
+            fabMoveDown, textMoveUp, textMoveOut, edtAnimOpen, edtAniClose, btnRightAction, btnRightActionHide;
 
     private TextView txtLocate, txtNearBy, txtSchedule; //text decription for main floating button
     private DrawerLayout drawerNearBy; // drawer navigation
     private EditText edtsearch;  // edit text search
+    private String textSearch;
     private LinearLayout lnHeader; // linear layout header of drawer navigation
     private AVLoadingIndicatorView aviLoading ; //  progressbar when loading
+    private ImageView imvPin;
 
     private GoogleMap mMap; // main map
     private LatLng locateMe; // location of user
@@ -77,6 +98,9 @@ public class MainActivity extends FragmentActivity
     private int timesUpdatePlace = 0; //count times call updatePlace()
     private int sizeJSONArr = 0; //length JSONArray results
     private boolean flagMapLoaded = false;
+    private LatLng oldLocate; //cacht last locatepin before
+    private LatLng endLocation; //end location directions
+    private LatLng realLocateMe;
 
     private final String KEY_API_PLACES = "AIzaSyC4U9eZCroaixKpvMgHbUMyNO-Ekni_AuU";
     private final int DELAY_ON_CLICK_ITEM = 400; // delay when drawer is closed
@@ -90,15 +114,25 @@ public class MainActivity extends FragmentActivity
     private final String SENSOR = "sensor=false";
     private final String DEFAULT_TYPES_SEARCH = "cafe|food";
 
+    private final String BASIC_URL_DIRECTIONS ="https://maps.googleapis.com/maps/api/directions/json?origin=";
+    private final String TXT_DESTINATION = "&destination=place_id:";
+    private  String language ="en";
+    private final String KEY_DIRECTIONS = "AIzaSyBZVwSKR1huK5BFfJ-DqRen-CPZ07MCzqE";
+
+    private final String BASIC_URL_TEXT_SEARCH = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=";
+
     private String typeSearch;
     private String latSearch;
     private String lngSearch;
     private String radiusSearch;
     private String urlNearBy;
+    private ArrayList<NearByPlaces> listPlaces ;
+    private String placeIDMarkerClicked;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_layout);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -107,6 +141,11 @@ public class MainActivity extends FragmentActivity
         fabSchedule = (FloatingActionButton) findViewById(R.id.fab_setSchedule);
         fabNearBy = (FloatingActionButton) findViewById(R.id.fab_nearBy);
         fabLocateMe = (FloatingActionButton) findViewById(R.id.fab_locate_me);
+
+        btnDirect = (Button)findViewById(R.id.btn_direct);
+        btnDetail = (Button) findViewById(R.id.btn_detail);
+
+        imvPin = (ImageView) findViewById(R.id.imageMarker);
 
         txtLocate = (TextView) findViewById(R.id.txt_decript_lme);
         txtNearBy = (TextView) findViewById(R.id.txt_decript_nearb);
@@ -123,8 +162,10 @@ public class MainActivity extends FragmentActivity
         textMoveOut = AnimationUtils.loadAnimation(this, R.anim.text_move_out);
         edtAnimOpen = AnimationUtils.loadAnimation(this, R.anim.edt_search_anim_open_width);
         edtAniClose = AnimationUtils.loadAnimation(this, R.anim.edt_search_anim_close_width);
+        btnRightAction = AnimationUtils.loadAnimation(this,R.anim.btn_right_action);
+        btnRightActionHide = AnimationUtils.loadAnimation(this,R.anim.btn_right_action_close);
 
-
+        listPlaces = new ArrayList<NearByPlaces>();
         //load drawer near by
         drawerNearBy = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -139,9 +180,14 @@ public class MainActivity extends FragmentActivity
                 ,typesSearch);
         listTypesSearch.setAdapter(adapter);
 
+
         //load map
         mapFragment.getMapAsync(this);
 
+        //fist load place
+        locateMe = new LatLng(-33.882256, 151.207192); // test
+        oldLocate = locateMe;
+        realLocateMe = locateMe;
 
         edtsearch.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -163,7 +209,15 @@ public class MainActivity extends FragmentActivity
                         keyEvent.getAction() == KeyEvent.ACTION_DOWN
                         ) {
                     //do something here (load map)
-
+                        flagTextSearch = true;
+                        textSearch = edtsearch.getText().toString();
+                        if(!textSearch.equals("") | textSearch != null) {
+                            timesUpdatePlace = 0;
+                            String url = buidURLTextSearch(textSearch);
+                            Log.d("test", url);
+                            PlacesTask placeSearch = new PlacesTask();
+                            placeSearch.execute(url);
+                        }
                     //xxxxxxxxxxxxxxxxxxxxx
 
                     edtsearch.clearFocus();
@@ -191,11 +245,10 @@ public class MainActivity extends FragmentActivity
             public void onClick(View view) {
                 if (!flagMenuOpen) {
                     showChildMenu();
-                    flagMenuOpen = true;
                 } else {
                     hideChildMenu();
-                    flagMenuOpen = false;
                 }
+                hideRinghtActionButton();
             }
         });
 
@@ -204,6 +257,7 @@ public class MainActivity extends FragmentActivity
             @Override
             public void onClick(View view) {
                 //do something here
+                locateMe = realLocateMe;
                 CameraPosition cameraPosition = new CameraPosition.Builder()
                         .target(locateMe)      // Sets the center of the map to Mountain View
                         .zoom(carmeraZoom)                   // Sets the zoom
@@ -211,10 +265,17 @@ public class MainActivity extends FragmentActivity
                         .tilt(50)                   // Sets the tilt of the camera to 30 degrees
                         .build();                   // Creates a CameraPosition from the builder
                 mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                mMap.addMarker(new MarkerOptions().position(locateMe).title("you"));
+                imvPin.setVisibility(View.INVISIBLE);
                 hideChildMenu();
+                hideRinghtActionButton();
                 flagMenuOpen = false;
+                if(!flagDirectionMode){
+                    flagSearchmode = false;
+                }
             }
         });
+
 
         //btn nearby on click
         fabNearBy.setOnClickListener(new View.OnClickListener() {
@@ -223,7 +284,9 @@ public class MainActivity extends FragmentActivity
                 //do something here
                 drawerNearBy.openDrawer(GravityCompat.START);
                 hideChildMenu();
+                hideRinghtActionButton();
                 flagMenuOpen = false;
+                flagSearchmode = true;
             }
         });
 
@@ -231,10 +294,50 @@ public class MainActivity extends FragmentActivity
         fabSchedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //so something here
+                //do something here
+
 
                 hideChildMenu();
+                hideRinghtActionButton();
                 flagMenuOpen = false;
+            }
+        });
+        //btn direct on click
+        btnDirect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                hideRinghtActionButton();
+                //do some thing here
+                flagDirectionMode = true;
+                flagSearchmode = false;
+                imvPin.setVisibility(View.INVISIBLE);
+                String url = buidURLDirections();
+                Log.d("test",url);
+                DirectionsTask directionsTask = new DirectionsTask();
+                directionsTask.execute(url);
+
+                CameraPosition cameraPosition = new CameraPosition.Builder()
+                        .target(locateMe)      // Sets the center of the map to Mountain View
+                        .zoom(carmeraZoom)                   // Sets the zoom
+                        .bearing(90)                // Sets the orientation of the camera to east
+                        .tilt(50)                   // Sets the tilt of the camera to 30 degrees
+                        .build();                   // Creates a CameraPosition from the builder
+                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+            }
+        });
+
+        btnDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                hideRinghtActionButton();
+                //do some thing here
+                Intent intent = new Intent(MainActivity.this, PlaceDetailsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("placeID",placeIDMarkerClicked);
+                intent.putExtra("dataID",bundle);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
         });
 
@@ -242,6 +345,9 @@ public class MainActivity extends FragmentActivity
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                flagDirectionMode = false;
+                flagSearchmode = false;
+                imvPin.setVisibility(View.INVISIBLE);
                 CameraPosition.Builder carmeraBuider = new CameraPosition.Builder();
                 carmeraBuider.target(locateMe);
                 carmeraBuider.bearing(90);                // Sets the orientation of the camera to east
@@ -336,14 +442,13 @@ public class MainActivity extends FragmentActivity
                         typeSearch = DEFAULT_TYPES_SEARCH;
                     }
                 }
-                // Log.d("testParse",typeSearch);
-                buidURLSearch();
-                // Log.d("testParse",urlNearBy);
 
                 CameraPosition cameraPosition = carmeraBuider.build();  //buid position for camera map
                 mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                buidURLSearch();
                 PlacesTask placesTask = new PlacesTask();
                 mMap.clear();
+                mMap.addMarker(new MarkerOptions().position(locateMe).title("you"));
                 placesTask.execute(urlNearBy);
 
                 //delay drawer close
@@ -381,50 +486,81 @@ public class MainActivity extends FragmentActivity
             }
         });
 
+
+
     } // xxxxxxxxxxxxxx------end-onCreate-----xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     private void showChildMenu() {
-        fabSchedule.show();
-        fabNearBy.show();
-        fabLocateMe.show();
+        if(!flagMenuOpen) {
+            fabSchedule.show();
+            fabNearBy.show();
+            fabLocateMe.show();
 
-        fabPlus.startAnimation(plusOpenRotate);
-        fabLocateMe.startAnimation(fabMoveUpRotate);
-        fabNearBy.startAnimation(fabMoveUpRotate);
-        fabSchedule.startAnimation(fabMoveUpRotate);
+            fabPlus.startAnimation(plusOpenRotate);
+            fabLocateMe.startAnimation(fabMoveUpRotate);
+            fabNearBy.startAnimation(fabMoveUpRotate);
+            fabSchedule.startAnimation(fabMoveUpRotate);
 
-        fabSchedule.setClickable(true);
-        fabNearBy.setClickable(true);
-        fabLocateMe.setClickable(true);
+            fabSchedule.setClickable(true);
+            fabNearBy.setClickable(true);
+            fabLocateMe.setClickable(true);
 
-        txtSchedule.startAnimation(textMoveUp);
-        txtNearBy.startAnimation(textMoveUp);
-        txtLocate.startAnimation(textMoveUp);
+            txtSchedule.startAnimation(textMoveUp);
+            txtNearBy.startAnimation(textMoveUp);
+            txtLocate.startAnimation(textMoveUp);
 
-        txtSchedule.setVisibility(View.VISIBLE);
-        txtNearBy.setVisibility(View.VISIBLE);
-        txtLocate.setVisibility(View.VISIBLE);
+            txtSchedule.setVisibility(View.VISIBLE);
+            txtNearBy.setVisibility(View.VISIBLE);
+            txtLocate.setVisibility(View.VISIBLE);
+            flagMenuOpen = true;
+        }
 
+    }
 
+    //show right action button
+    private  void showRinghtActionButton(){
+
+        btnDetail.startAnimation(btnRightAction);
+        btnDirect.startAnimation(btnRightAction);
+        btnDetail.setClickable(true);
+        btnDirect.setClickable(true);
+        btnDetail.setVisibility(View.VISIBLE);
+        btnDirect.setVisibility(View.VISIBLE);
+        flagOpenBtnRight = true;
+    }
+    // hide action button
+    private  void hideRinghtActionButton(){
+        if(flagOpenBtnRight) {
+            btnDetail.startAnimation(btnRightActionHide);
+            btnDirect.startAnimation(btnRightActionHide);
+            btnDetail.setClickable(false);
+            btnDirect.setClickable(false);
+            btnDetail.setVisibility(View.INVISIBLE);
+            btnDirect.setVisibility(View.INVISIBLE);
+            flagOpenBtnRight = false;
+        }
     }
 
     private void hideChildMenu() {
 
-        txtSchedule.startAnimation(textMoveOut);
-        txtNearBy.startAnimation(textMoveOut);
-        txtLocate.startAnimation(textMoveOut);
+        if(flagMenuOpen) {
+            txtSchedule.startAnimation(textMoveOut);
+            txtNearBy.startAnimation(textMoveOut);
+            txtLocate.startAnimation(textMoveOut);
 
-        txtSchedule.setVisibility(View.INVISIBLE);
-        txtNearBy.setVisibility(View.INVISIBLE);
-        txtLocate.setVisibility(View.INVISIBLE);
+            txtSchedule.setVisibility(View.INVISIBLE);
+            txtNearBy.setVisibility(View.INVISIBLE);
+            txtLocate.setVisibility(View.INVISIBLE);
 
-        fabPlus.startAnimation(plusCloseRotate);
-        fabSchedule.hide();
-        fabNearBy.hide();
-        fabLocateMe.hide();
+            fabPlus.startAnimation(plusCloseRotate);
+            fabSchedule.hide();
+            fabNearBy.hide();
+            fabLocateMe.hide();
 
-        fabSchedule.setClickable(false);
-        fabNearBy.setClickable(false);
-        fabLocateMe.setClickable(false);
+            fabSchedule.setClickable(false);
+            fabNearBy.setClickable(false);
+            fabLocateMe.setClickable(false);
+            flagMenuOpen = false;
+        }
     }
 
     @Override
@@ -439,25 +575,26 @@ public class MainActivity extends FragmentActivity
         aviLoading.setVisibility(View.VISIBLE);
         flagMapLoaded = false;
         mMap = googleMap;
-        //fist load place
-        locateMe = new LatLng(10.851077, 106.758353); // test
+
+
 
         latSearch = String.valueOf(locateMe.latitude);
         lngSearch = String.valueOf(locateMe.longitude);
         radiusSearch = "1000";
         typeSearch = "cafe|food";
-
         buidURLSearch();
-        //Log.d("testParse",urlNearBy);
         PlacesTask placesTask = new PlacesTask();
         placesTask.execute(urlNearBy);
+
+        imvPin.setVisibility(View.GONE);
         mMap.setOnCameraChangeListener(this);
         mMap.setOnMarkerClickListener(this);
+        mMap.setOnMapClickListener(this);
         mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
         // Zoom in, animating the camera.
         mMap.animateCamera(CameraUpdateFactory.zoomIn());
         mMap.animateCamera(CameraUpdateFactory.zoomTo(20), 2000, null);
-     //   mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(locateMe,DEFAULT_CAMERA_MAP));
+
 
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(locateMe)      // Sets the center of the map to Mountain View
@@ -469,24 +606,50 @@ public class MainActivity extends FragmentActivity
         carmeraZoom = 16;
         // map loaded
         mMap.setOnMapLoadedCallback(this);
+
+        MarkerOptions me = new MarkerOptions();
+        me.position(locateMe);
+        me.title("you");
+        mMap.addMarker(me);
+
     }
 
     @Override
     public void onCameraChange(CameraPosition cameraPosition) {
-        aviLoading.setVisibility(View.VISIBLE);
+        flagMapLoaded = false;
         //Log.d("Camera postion change" + "", cameraPosition + "");
         locatePin = cameraPosition.target;
+
+        double distance = calculateDistance(locatePin,oldLocate);
+        distance = Math.round(distance);
+        int rdSearch = Integer.parseInt(radiusSearch);
        // flagMapLoaded = false;
         try {
              mMap.setOnMapLoadedCallback(this);
-            Location mLocation = new Location("");
-            mLocation.setLatitude(locatePin.latitude);
-            mLocation.setLongitude(locatePin.longitude);
+            if(distance > rdSearch && !flagDirectionMode){
+                if(flagSearchmode) {
+                    imvPin.setVisibility(View.VISIBLE);
+                    mMap.clear();
+                }
+                latSearch = String.valueOf(locatePin.latitude);
+                lngSearch = String.valueOf(locatePin.longitude);
+                buidURLSearch();
+                timesUpdatePlace = 0;
+                PlacesTask placesTask = new  PlacesTask();
+                placesTask.execute(urlNearBy);
+                oldLocate = locatePin;
+            }
+
+            if(timesUpdatePlace == sizeJSONArr && flagMapLoaded){
+                aviLoading.setVisibility(View.INVISIBLE);
+                sizeJSONArr = 0;
+                timesUpdatePlace =0;
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        flagSearchmode = true;
     }
 
     /** A method to download json data from url */
@@ -542,6 +705,24 @@ public class MainActivity extends FragmentActivity
                 .build();
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
         marker.showInfoWindow();
+        //show action right button
+
+        hideChildMenu();
+
+        if(!listPlaces.isEmpty() && marker.getSnippet() != null){
+            showRinghtActionButton();
+            String makerAddress = marker.getSnippet();
+            for(int i = 0; i < listPlaces.size(); i++){
+                NearByPlaces place = listPlaces.get(i);
+                String placeAddress = place.getAddress();
+                if(placeAddress.equals(makerAddress)){
+                    placeIDMarkerClicked = place.getPlaceID();
+                    endLocation = new LatLng(place.getLatitude(),place.getLongitude());
+                    //Log.d("test",placeIDMarkerClicked);
+                }
+            }
+        }
+
         return true;
     }
 
@@ -554,6 +735,14 @@ public class MainActivity extends FragmentActivity
             timesUpdatePlace =0;
         }
         flagMapLoaded = true;
+    }
+
+    @Override
+    public void onMapClick(LatLng latLng) {
+        //hide right action button
+        //hide right action button
+        hideRinghtActionButton();
+        hideChildMenu();
     }
 
     /** A class, to download Google Places */
@@ -578,7 +767,7 @@ public class MainActivity extends FragmentActivity
         // Executed after the complete execution of doInBackground() method
         @Override
         protected void onPostExecute(String result){
-
+            listPlaces.clear();
             JSONObject rootObject = null;
             try {
                 rootObject = new JSONObject(result);
@@ -605,69 +794,141 @@ public class MainActivity extends FragmentActivity
             markerOptions.position(new LatLng(nearByPlaces.getLatitude(), nearByPlaces.getLongitude()));
             markerOptions.title(nearByPlaces.getName());
             markerOptions.snippet(nearByPlaces.getAddress());
-            if (nearByPlaces.getTypes().contains("restaurant")) {
-                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_food));
-            } else {
-                if (nearByPlaces.getTypes().contains("food") && nearByPlaces.getTypes().contains("cafe")) {
-                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_cafe));
-                } else {
-                    if (nearByPlaces.getTypes().contains("food") && !nearByPlaces.getTypes().contains("cafe")) {
-                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_food));
-                    } else {
-                        if (nearByPlaces.getTypes().contains("gym")) {
-                            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_gym));
-                        } else {
-                            if (nearByPlaces.getTypes().contains("hospital")) {
-                                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_hospital));
-                            } else {
-                                if (nearByPlaces.getTypes().contains("park")) {
-                                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_park));
-                                } else {
-                                    if (nearByPlaces.getTypes().contains("zoo")) {
-                                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_park));
-                                    } else {
-                                        if (nearByPlaces.getTypes().contains("bar") && nearByPlaces.getTypes().contains("night_club")) {
-                                            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_bar));
-                                        } else {
-                                            if (nearByPlaces.getTypes().contains("police")) {
-                                                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_police));
-                                            } else {
-                                                if (nearByPlaces.getTypes().contains("airport")) {
-                                                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_airport));
-                                                }else{
-                                                    if (nearByPlaces.getTypes().contains("car_repair")) {
-                                                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_car_rp));
-                                                    }else{
-                                                        if (nearByPlaces.getTypes().contains("post_office")) {
-                                                            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_office));
-                                                        }else{
-                                                            if (nearByPlaces.getTypes().contains("bank")) {
-                                                                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_bank));
-                                                            }else
-                                                            {
-                                                                if (nearByPlaces.getTypes().contains("atm")) {
-                                                                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_atm));
-                                                                }else{
-                                                                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_unknow));
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+            switch (typeSearch){
+                case "cafe":{
+                    if(nearByPlaces.getTypes().contains("cafe")) {
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_cafe));
+                        mMap.addMarker(markerOptions);
                     }
+                    break;
                 }
+                case "food" :{
+                    if(nearByPlaces.getTypes().contains("food") | nearByPlaces.getTypes().contains("restaurant") ) {
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_food));
+                        mMap.addMarker(markerOptions);
+                    }
+                    break;
+                }
+                case "gym":{
+                    if(nearByPlaces.getTypes().contains("gym")) {
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_gym));
+                        mMap.addMarker(markerOptions);
+                    }
+                    break;
+                }
+                case "park":{
+                    if(nearByPlaces.getTypes().contains("park")) {
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_park));
+                        mMap.addMarker(markerOptions);
+                    }
+                    break;
+                }
+                case "bar":{
+                    if(nearByPlaces.getTypes().contains("bar")) {
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_bar));
+                        mMap.addMarker(markerOptions);
+                    }
+                    break;
+                }
+                case "post_office":{
+                    if(nearByPlaces.getTypes().contains("post_office")) {
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_office));
+                        mMap.addMarker(markerOptions);
+                    }
+                    break;
+                }
+                case "airport":{
+                    if(nearByPlaces.getTypes().contains("airport") &&
+                            !nearByPlaces.getTypes().contains("food") &&
+                            !nearByPlaces.getTypes().contains("moving_company") &&
+                            !nearByPlaces.getTypes().contains("travel_agency") &&
+                            !nearByPlaces.getTypes().contains("store") &&
+                            !nearByPlaces.getTypes().contains("car_rental")
+
+                            ) {
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_airport));
+                        mMap.addMarker(markerOptions);
+                    }
+                    break;
+                }
+                case "car_repair":{
+                    if(nearByPlaces.getTypes().contains("car_repair")) {
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_car_rp));
+                        mMap.addMarker(markerOptions);
+                    }
+                    break;
+                }
+                case "atm":{
+                    if(nearByPlaces.getTypes().contains("atm") &&
+                            !nearByPlaces.getTypes().contains("food")) {
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_atm));
+                        mMap.addMarker(markerOptions);
+                    }
+                    break;
+                }
+                case "bank":{
+                    if(nearByPlaces.getTypes().contains("bank") &&
+                            !nearByPlaces.getTypes().contains("food")) {
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_bank));
+                        mMap.addMarker(markerOptions);
+                    }
+                    break;
+                }
+                case "police":{
+                    if(nearByPlaces.getTypes().contains("police") &&
+                            !nearByPlaces.getTypes().contains("food")) {
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_police));
+                        mMap.addMarker(markerOptions);
+                    }
+                    break;
+                }
+                case "hospital":{
+                    if(nearByPlaces.getTypes().contains("hospital") &&
+                            !nearByPlaces.getTypes().contains("food") &&
+                            !nearByPlaces.getTypes().contains("beauty_salon") &&
+                            !nearByPlaces.getTypes().contains("store")){
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_hospital));
+                        mMap.addMarker(markerOptions);
+                    }
+                    break;
+                }
+
+                //default search
+                case "cafe|food":{
+                    if(nearByPlaces.getTypes().contains("cafe") && nearByPlaces.getTypes().contains("food")){
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_cafe));
+                        mMap.addMarker(markerOptions);
+                    }else{
+                        if(!nearByPlaces.getTypes().contains("cafe") && nearByPlaces.getTypes().contains("food") || nearByPlaces.getTypes().contains("restaurant"))
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_food));
+                        mMap.addMarker(markerOptions);
+                    }
+                    break;
+                }
+                default:{
+                    mMap.addMarker(markerOptions);
+                }
+
             }
-            mMap.addMarker(markerOptions);
+
             if(timesUpdatePlace == sizeJSONArr && flagMapLoaded){
                 aviLoading.setVisibility(View.INVISIBLE);
                 sizeJSONArr = 0;
                 timesUpdatePlace =0;
+            }
+
+            if(flagTextSearch && timesUpdatePlace == 0){
+                flagTextSearch = false;
+                locateMe = new LatLng(nearByPlaces.getLatitude(),nearByPlaces.getLongitude());
+                //Log.d("test",locateMe.latitude+"");
+                CameraPosition cameraPosition = new CameraPosition.Builder()
+                        .target(locateMe)      // Sets the center of the map to Mountain View
+                        .zoom(15)                   // Sets the zoom
+                        .bearing(90)                // Sets the orientation of the camera to east
+                        .tilt(15)                   // Sets the tilt of the camera to 15 degrees
+                        .build();                   // Creates a CameraPosition from the builder
+                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
             }
     }
 
@@ -691,6 +952,7 @@ public class MainActivity extends FragmentActivity
 
         @Override
         protected void onPostExecute(NearByPlaces nearByPlaces) {
+            listPlaces.add(nearByPlaces);
             updatePlacesNB(nearByPlaces);
         }
     }
@@ -703,10 +965,97 @@ public class MainActivity extends FragmentActivity
                 TXT_KEY+KEY_API_PLACES;
     }
 
-    private int calculateDistance(LatLng newPoint, LatLng oldPoint){
-        int distance = 0;
-        
-        return distance;
+    private double calculateDistance(LatLng newPoint, LatLng oldPoint){
+
+        double earthRadius = 3958.75;
+        double latDiff = Math.toRadians(newPoint.latitude - oldPoint.latitude);
+        double lngDiff = Math.toRadians(newPoint.longitude-oldPoint.longitude);
+        double a = Math.sin(latDiff /2) * Math.sin(latDiff /2) +
+                Math.cos(Math.toRadians(oldPoint.latitude)) * Math.cos(Math.toRadians(newPoint.latitude)) *
+                        Math.sin(lngDiff /2) * Math.sin(lngDiff /2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        double distance = earthRadius * c;
+
+        int meterConversion = 1609;
+
+        return new Float(distance * meterConversion).floatValue();
+    }
+
+    //xxx--xx--Directions--xx--xxx
+
+    private String buidURLDirections(){
+
+        String url = BASIC_URL_DIRECTIONS+locateMe.latitude+
+                ","+locateMe.longitude+TXT_DESTINATION+placeIDMarkerClicked+TOKEN_AND
+                +"language="+language+TOKEN_AND+TXT_KEY+KEY_DIRECTIONS;
+        return url;
+    }
+
+    //draw directions
+    private void drawDirections(Directions directions){
+        PolylineOptions polylineOptions = new PolylineOptions();
+       ArrayList<StepsDirections> steps = null;
+        steps = directions.getSteps();
+        for(StepsDirections step : steps){
+
+            polylineOptions.addAll(step.getPolyPoint());
+            Log.d("test",step.getInstructions());
+        }
+
+
+
+
+        polylineOptions.width(11);
+        polylineOptions.color(getResources().getColor(R.color.colorAccent));
+
+        if(polylineOptions != null) {
+            mMap.clear();
+            mMap.addMarker(new MarkerOptions().position(locateMe).title("you"));
+            mMap.addMarker(new MarkerOptions().position(directions.getEndLocation()).title(directions.getEndAddress()));
+//            mMap.addMarker(new MarkerOptions().position());
+           mMap.addPolyline(polylineOptions);
+
+       }
+    }
+
+    private class DirectionsTask extends  AsyncTask<String, Integer, String>{
+        @Override
+        protected String doInBackground(String... strings) {
+            String data ="";
+            try {
+                data =  downloadUrl(strings[0]);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return data;
+        }
+
+        @Override
+        protected void onPostExecute(String directions) {
+            parseDirectionsTask directionsTask = new parseDirectionsTask();
+            directionsTask.execute(directions);
+        }
+    }
+
+    private class parseDirectionsTask extends AsyncTask<String, Integer, Directions>{
+        @Override
+        protected Directions doInBackground(String... strings) {
+            Directions directions = null;
+
+            JSONParsePlaces direct = new JSONParsePlaces();
+            directions = direct.parseDirections(strings[0]);
+            return directions;
+        }
+
+        @Override
+        protected void onPostExecute(Directions directions) {
+            drawDirections(directions);
+        }
+    }
+
+    private String buidURLTextSearch(String textS){
+        String url = BASIC_URL_TEXT_SEARCH + textS + TOKEN_AND + TXT_KEY + KEY_API_PLACES;
+        return  url;
     }
 
 }

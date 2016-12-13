@@ -10,13 +10,15 @@ public class PlaceDetails {
 
     private String placeID;
     private String name;
-    private ArrayList<String> review;
+    private ArrayList<Review> review;
     private ArrayList<String> photo;
-    private String rating;
-    private boolean openNow;
+    private double rating;
+    private String openNow;
     private String website;
+    private String address;
+    private String phoneNumber;
 
-    public PlaceDetails(String placeID, String name, ArrayList<String> review, ArrayList<String> photo, String rating, boolean openNow, String website) {
+    public PlaceDetails(String placeID, String name, ArrayList<Review> review, ArrayList<String> photo, double rating, String openNow, String website) {
         this.placeID = placeID;
         this.name = name;
         this.review = review;
@@ -30,9 +32,11 @@ public class PlaceDetails {
         this.name = "unKnow";
         this.review = null;
         this.photo = null;
-        this.rating = "unKnow";
+        this.rating = -1;
         this.website = "unKnow";
-        this.openNow = false;
+        this.openNow = "nodata";
+        this.address = "unKnow";
+        this.phoneNumber="unKnow";
     }
 
     public String getPlaceID() {
@@ -51,11 +55,11 @@ public class PlaceDetails {
         this.name = name;
     }
 
-    public ArrayList<String> getReview() {
+    public ArrayList<Review> getReview() {
         return review;
     }
 
-    public void setReview(ArrayList<String> review) {
+    public void setReview(ArrayList<Review> review) {
         this.review = review;
     }
 
@@ -67,19 +71,19 @@ public class PlaceDetails {
         this.photo = photo;
     }
 
-    public String getRating() {
+    public double getRating() {
         return rating;
     }
 
-    public void setRating(String rating) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
 
-    public boolean isOpenNow() {
+    public String getOpenNow() {
         return openNow;
     }
 
-    public void setOpenNow(boolean openNow) {
+    public void setOpenNow(String openNow) {
         this.openNow = openNow;
     }
 
@@ -89,5 +93,21 @@ public class PlaceDetails {
 
     public void setWebsite(String website) {
         this.website = website;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

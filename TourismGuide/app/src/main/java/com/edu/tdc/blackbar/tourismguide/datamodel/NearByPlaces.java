@@ -1,5 +1,7 @@
 package com.edu.tdc.blackbar.tourismguide.datamodel;
 
+import com.google.android.gms.maps.model.Marker;
+
 import java.util.ArrayList;
 
 /**
@@ -24,6 +26,7 @@ public class NearByPlaces {
     }
 
     public NearByPlaces(String placeID, Double latitude, Double longitude, ArrayList<String> types, String name, String address) {
+        super();
         this.placeID = placeID;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -32,49 +35,61 @@ public class NearByPlaces {
         this.address = address;
     }
 
+
     public String getPlaceID() {
         return placeID;
     }
+
 
     public Double getLongitude() {
         return longitude;
     }
 
+
     public Double getLatitude() {
         return latitude;
     }
+
 
     public void setPlaceID(String placeID) {
         this.placeID = placeID;
     }
 
+
     public void setType(ArrayList<String> type) {
         this.types = type;
     }
+
 
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 
+
     public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
+
 
     public String getName() {
         return name;
     }
 
+
     public void setName(String name) {
         this.name = name;
     }
+
 
     public String getAddress() {
         return address;
     }
 
+
     public void setAddress(String address) {
         this.address = address;
     }
+
 
     public ArrayList<String> getTypes() {
         return types;
