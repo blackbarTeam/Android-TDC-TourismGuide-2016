@@ -80,10 +80,16 @@ public class SplashScreen extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1){
-            if(isOnline())
-                goNextActivity();
-            else
-                showAlerDialog();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if(isOnline())
+                        goNextActivity();
+                    else
+                        showAlerDialog();
+                }
+            }, 4000);
+
         }
     }
 }
