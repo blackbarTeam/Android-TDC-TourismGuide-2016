@@ -10,7 +10,6 @@ import android.os.CountDownTimer;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -23,7 +22,9 @@ public class ScheduleActivity extends AppCompatActivity {
     private EditText edtTimeFrom, edtTimeTo, edtDateFrom, edtDateTo, edtLocation, edtNote;
     private ImageButton imgCheck, imgCancle, imgCalendar;
     private Switch swCount;
-    private Button btn_back_details;
+    //ScheduleDataConnect dc;
+
+
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +40,11 @@ public class ScheduleActivity extends AppCompatActivity {
         imgCancle = (ImageButton) findViewById(R.id.imgCancle);
         imgCalendar = (ImageButton) findViewById(R.id.imgCalendar);
         swCount = (Switch) findViewById(R.id.swCountDown);
-        btn_back_details = (Button) findViewById(R.id.btn_back_details);
+       // dc = new ScheduleDataConnect(ScheduleActivity.this);
 
 
 
-        //back
+
 
         //Calendar ( LUU Y: CHUA SU DUNG DUOC DO VAN DE VE API CUA ANDROID )
         imgCalendar.setOnClickListener(new View.OnClickListener() {
@@ -65,13 +66,8 @@ public class ScheduleActivity extends AppCompatActivity {
                     CountDownTimer count = new CountDownTimer(30000,1000) {
                         @Override
                         public void onTick(long millisUntilFinished) {
-                            Toast toast1 = Toast.makeText(ScheduleActivity.this, "Countdown start", Toast.LENGTH_SHORT);
-                            toast1.show();
-                            String a = edtDateFrom.getText().toString();
-                            String b =edtDateTo.getText().toString();
-
-//                            Log.d("countdown",a);
-//                            Log.d("countdown",b);
+//                            Toast toast1 = Toast.makeText(ScheduleActivity.this, "Countdown start", Toast.LENGTH_SHORT);
+//                            toast1.show();
 
                         }
 
@@ -95,9 +91,19 @@ public class ScheduleActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+                //nhap du lieu
+                Bundle bundle = new Bundle();
+                bundle.putString("Location", edtLocation.getText().toString());
+                bundle.putString("DateFrm", edtDateFrom.getText().toString());
+                bundle.putString("DateTo", edtDateTo.getText().toString());
+                bundle.putString("Time", edtTimeFrom.getText().toString());
+                bundle.putString("Note", edtNote.getText().toString());
+                Intent int1 = new Intent(ScheduleActivity.this, ScheduleMainActivity.class);
+                int1.putExtra("data", bundle);
 
-                edtDateTo.getText().toString().trim();
-                edtDateFrom.getText().toString().trim();
+                startActivity(int1);
+
+
                 //khoi tao notification
                 AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
@@ -111,21 +117,24 @@ public class ScheduleActivity extends AppCompatActivity {
                 alarmManager.setExact(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), broadcast);
 
 
+                finish();
+
             }
         });
 
         //intent tra ve main
-
-
-        //intent tra ve main
-        btn_back_details.setOnClickListener(new View.OnClickListener() {
+        imgCancle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();
-                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
-
+                Intent intent = new Intent(ScheduleActivity.this, ScheduleMainActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
+
+
+
+
 
 
     }

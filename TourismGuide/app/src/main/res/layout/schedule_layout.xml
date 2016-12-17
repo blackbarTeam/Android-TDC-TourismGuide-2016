@@ -8,29 +8,52 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="65dp"
         android:background="@color/holo_orange_light"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_weight="0.01">
 
-        <Button
-            android:id="@+id/btn_back_details"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:gravity="left|center_vertical"
-            android:paddingLeft="20dp"
-            android:text="&lt;"
-            android:textColor="@color/white"
-            android:textSize="28sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="71dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:weightSum="1"
+            >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/title_place_details"
-            android:textColor="@color/white"
-            android:textSize="@dimen/txt_size_title"
-            android:textStyle="bold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_schedule"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_size_title"
+                android:textStyle="bold"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="0.99"/>
+
+            <ImageButton
+                android:id="@+id/imgCancle"
+                android:layout_width="37dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:foregroundGravity="center_vertical|center_horizontal"
+                android:src="@drawable/cancle"
+                />
+
+            <ImageButton
+                android:id="@+id/imgCheck"
+                android:layout_width="31dp"
+                android:layout_height="31dp"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:foregroundGravity="center"
+                android:src="@drawable/check"
+                />
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -117,7 +140,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:hint="@string/inputdatefrom"
-                    android:inputType="datetime"
                     android:maxLines="1"
                     android:singleLine="true"></EditText>
 
@@ -135,13 +157,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:hint="@string/inputdateto"
-                    android:inputType="datetime"
+
                     android:maxLines="1"
                     android:singleLine="true"></EditText>
 
                 <ImageButton
                     android:id="@+id/imgCalendar"
-                    android:layout_width="82dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:src="@drawable/calendar128"
@@ -189,7 +211,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:hint="@string/inputtimefrom"
-                    android:inputType="time"
+
                     android:maxLines="1"
                     android:singleLine="true"></EditText>
 
@@ -247,37 +269,6 @@
                     android:singleLine="true"></EditText>
 
             </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_gravity="end"
-            android:layout_marginTop="15dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:paddingBottom="20dp"
-            android:paddingTop="20dp"
-            android:weightSum="1"
-            >
-
-            <ImageButton
-                android:id="@+id/imgCancle"
-                android:layout_width="14dp"
-                android:layout_height="14dp"
-                android:layout_gravity="center"
-                android:foregroundGravity="center_vertical|center_horizontal"
-                android:src="@drawable/cancle"
-                />
-
-            <ImageButton
-                android:id="@+id/imgCheck"
-                android:layout_width="31dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:foregroundGravity="center"
-                android:src="@drawable/check"
-                />
         </LinearLayout>
 
     </LinearLayout>

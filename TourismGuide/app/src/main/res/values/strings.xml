@@ -8,6 +8,7 @@
     <string name="btn_direct">Direct</string>
     <string name="btn_info">Detail</string>
     <string name="title_place_details">Information</string>
+    <string name="title_schedule">Schedule</string>
     <string name="location">Where do you want to go?</string>
     <string name="locationDesc"> Input Location Here </string>
     <string name="fromdate">From</string>

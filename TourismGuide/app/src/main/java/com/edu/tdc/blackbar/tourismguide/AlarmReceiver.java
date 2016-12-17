@@ -19,10 +19,10 @@ public class AlarmReceiver extends BroadcastReceiver {
 
 
 
-        Intent notificationIntent = new Intent(context, ScheduleActivity.class);
+        Intent notificationIntent = new Intent(context, ScheduleMainActivity.class);
 
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-        stackBuilder.addParentStack(ScheduleActivity.class);
+        stackBuilder.addParentStack(ScheduleMainActivity.class);
         stackBuilder.addNextIntent(notificationIntent);
 
         PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
