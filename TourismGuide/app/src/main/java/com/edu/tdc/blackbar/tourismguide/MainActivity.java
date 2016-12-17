@@ -1085,7 +1085,8 @@ public class MainActivity extends FragmentActivity
 
     private void getRealLocation(){
         gps.getLocation();
-        Log.d("test",gps.iscancle+"");
+        //Log.d("test",gps.iscancle+"");
+        //Log.d("test",gps.canGetLocation()+"");
         if(gps.canGetLocation() ){
             realLocateMe = new LatLng(gps.getLatitude(),gps.getLongitude());
             locateMe = realLocateMe;
@@ -1118,11 +1119,18 @@ public class MainActivity extends FragmentActivity
     }
 
     private void clickBtnLocateMe(){
-        gps.getLocation();
-        if(gps.canGetLocation() && !gps.iscancle)
+        Location l = gps.getLocation();
+
+        Log.d("gps", gps.iscancle + "");
+
+        if(gps.canGetLocation() && !gps.iscancle ) {
             locateMe = new LatLng(gps.getLatitude(), gps.getLongitude());
+            Log.d("test",locateMe.toString());
+        }
         else
             locateMe = realLocateMe;
+
+
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(locateMe)      // Sets the center of the map to Mountain View
                 .zoom(carmeraZoom)                   // Sets the zoom
